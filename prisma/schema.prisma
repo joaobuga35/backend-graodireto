@@ -9,3 +9,52 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  admin     Boolean  @default(false)
+  createdAt DateTime
+
+  @@map("users")
+}
+
+model Restaurant {
+  id        String   @id @default(uuid())
+  name      String
+  phone     String
+  addressId String?
+  Address   Address? @relation(fields: [addressId], references: [id], onDelete: Cascade)
+  foods     Food[]
+
+  createdAt DateTime
+
+  @@map("restaurants")
+}
+
+model Address {
+  id         String       @id @default(uuid())
+  zipCode    String
+  state      String
+  city       String
+  street     String
+  number     String
+  complement String?
+  Restaurant Restaurant[]
+
+  @@map("addresses")
+}
+
+model Food {
+  id           String      @id @default(uuid())
+  name         String
+  description  String
+  price        String
+  createdAt    DateTime
+  Restaurant   Restaurant? @relation(fields: [restaurantId], references: [id])
+  restaurantId String?
+
+  @@map("foods")
+}
