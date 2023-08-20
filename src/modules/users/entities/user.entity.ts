@@ -1,5 +1,14 @@
 import { Exclude } from 'class-transformer';
 
+export class Address {
+  zipCode: string;
+  state: string;
+  city: string;
+  street: string;
+  number: string;
+  complement?: string;
+}
+
 export class User {
   readonly id: string;
   name: string;
@@ -9,6 +18,7 @@ export class User {
   password: string;
 
   admin: boolean;
+  Address: Address;
   createdAt: string;
 
   constructor() {
