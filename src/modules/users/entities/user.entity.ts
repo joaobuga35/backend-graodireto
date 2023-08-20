@@ -18,8 +18,7 @@ export class User {
   password: string;
 
   admin: boolean;
-  Address: Address;
-  createdAt: string;
+  readonly createdAt: string;
 
   constructor() {
     this.createdAt = String(new Date());
