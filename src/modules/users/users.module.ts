@@ -35,5 +35,9 @@ export class UsersModule implements NestModule {
         { path: 'users/:id', method: RequestMethod.PATCH },
         { path: 'users/:id', method: RequestMethod.DELETE },
       );
+    consumer.apply(AuthenticationAdmAndIdMiddleware).forRoutes({
+      path: 'users',
+      method: RequestMethod.GET,
+    });
   }
 }
