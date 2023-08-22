@@ -72,7 +72,7 @@ export class RestaurantsPrismaRepository implements RestaurantsRepository {
             complement: true,
           },
         },
-        foods: {},
+        foods: true,
       },
     });
 

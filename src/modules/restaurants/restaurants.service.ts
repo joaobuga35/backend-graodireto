@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateRestaurantDto } from './dto/create-restaurant.dto';
-import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
 import { RestaurantsRepository } from './repositories/restaurants.repository';
 
 @Injectable()
@@ -18,9 +17,10 @@ export class RestaurantsService {
     return allRestaurants;
   }
 
-  // findOne(id: string) {
-  //   return `This action returns a #${id} restaurant`;
-  // }
+  async findOne(id: string) {
+    const restaurant = await this.restaurantRepository.findOne(id);
+    return restaurant;
+  }
 
   // update(id: string, updateRestaurantDto: UpdateRestaurantDto) {
   //   return `This action updates a #${id} restaurant`;
