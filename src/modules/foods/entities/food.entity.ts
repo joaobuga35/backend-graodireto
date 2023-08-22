@@ -4,6 +4,7 @@ export class Food {
   description: string;
   price: string;
   image: string;
+  restaurantId: string;
   readonly createdAt: string;
 
   constructor() {

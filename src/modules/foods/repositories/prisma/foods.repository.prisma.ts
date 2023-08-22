@@ -12,7 +12,9 @@ export class FoodsPrismaRepository implements FoodsRepository {
     const food = new Food();
     Object.assign(food, { ...data });
 
-    const newFood = await this.prisma.food.create({ data: { ...food } });
+    const newFood = await this.prisma.food.create({
+      data: { ...food },
+    });
 
     return plainToInstance(Food, newFood);
   }

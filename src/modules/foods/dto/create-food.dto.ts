@@ -16,4 +16,8 @@ export class CreateFoodDto {
   @IsString()
   @IsNotEmpty()
   image: string;
+
+  @IsString()
+  @IsNotEmpty()
+  restaurantId: string;
 }

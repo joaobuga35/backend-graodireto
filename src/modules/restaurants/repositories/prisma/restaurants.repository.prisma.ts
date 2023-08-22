@@ -51,14 +51,33 @@ export class RestaurantsPrismaRepository implements RestaurantsRepository {
             complement: true,
           },
         },
+        foods: true,
       },
     });
 
     return plainToInstance(Restaurant, allRestaurants);
   }
-  // findOne(id: string): Promise<Restaurant> {
-  //   throw new Error('Method not implemented.');
-  // }
+  async findOne(id: string): Promise<Restaurant> {
+    const restaurant = await this.prisma.restaurant.findUnique({
+      where: { id: id },
+      include: {
+        Address: {
+          select: {
+            id: false,
+            zipCode: true,
+            state: true,
+            city: true,
+            street: true,
+            number: true,
+            complement: true,
+          },
+        },
+        foods: {},
+      },
+    });
+
+    return plainToInstance(Restaurant, restaurant);
+  }
   // update(id: string, data: UpdateRestaurantDto): Promise<Restaurant> {
   //   throw new Error('Method not implemented.');
   // }
