@@ -25,6 +25,7 @@ model Restaurant {
   id        String   @id @default(uuid())
   name      String
   phone     String
+  image     String
   addressId String?
   Address   Address? @relation(fields: [addressId], references: [id], onDelete: Cascade)
   foods     Food[]
@@ -51,6 +52,7 @@ model Food {
   id           String      @id @default(uuid())
   name         String
   description  String
+  image        String
   price        String
   createdAt    String
   Restaurant   Restaurant? @relation(fields: [restaurantId], references: [id])

@@ -42,6 +42,10 @@ export class CreateRestaurantDto {
   @IsNotEmpty()
   phone: string;
 
+  @IsString()
+  @IsNotEmpty()
+  image: string;
+
   @IsObject()
   @ValidateNested()
   @Type(() => CreateAddressDto)

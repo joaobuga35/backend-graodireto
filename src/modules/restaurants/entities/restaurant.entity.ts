@@ -8,9 +8,10 @@ export class Address {
 }
 
 export class Restaurant {
-  readonly id: number;
+  readonly id: string;
   name: string;
   phone: string;
+  image: string;
   address: Address;
   readonly createdAt: string;
 
