@@ -4,6 +4,7 @@ import { RestaurantsRepository } from '../restaurants.repository';
 import { CreateRestaurantDto } from '../../dto/create-restaurant.dto';
 import { Restaurant } from '../../entities/restaurant.entity';
 import { plainToInstance } from 'class-transformer';
+import { UpdateRestaurantDto } from '../../dto/update-restaurant.dto';
 
 @Injectable()
 export class RestaurantsPrismaRepository implements RestaurantsRepository {
@@ -78,10 +79,26 @@ export class RestaurantsPrismaRepository implements RestaurantsRepository {
 
     return plainToInstance(Restaurant, restaurant);
   }
-  // update(id: string, data: UpdateRestaurantDto): Promise<Restaurant> {
-  //   throw new Error('Method not implemented.');
-  // }
-  // delete(id: string): void | Promise<void> {
-  //   throw new Error('Method not implemented.');
-  // }
+  async update(id: string, data: UpdateRestaurantDto): Promise<Restaurant> {
+    const { address, ...others } = data;
+
+    const updatedRestaurant = await this.prisma.restaurant.update({
+      where: { id: id },
+      data: {
+        ...others,
+        Address: {
+          update: { ...address },
+        },
+      },
+      include: {
+        Address: true,
+        foods: true,
+      },
+    });
+
+    return plainToInstance(Restaurant, updatedRestaurant);
+  }
+  async delete(id: string): Promise<void> {
+    await this.prisma.restaurant.delete({ where: { id: id } });
+  }
 }

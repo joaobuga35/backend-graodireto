@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateRestaurantDto } from './dto/create-restaurant.dto';
 import { RestaurantsRepository } from './repositories/restaurants.repository';
+import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
 
 @Injectable()
 export class RestaurantsService {
@@ -22,11 +23,16 @@ export class RestaurantsService {
     return restaurant;
   }
 
-  // update(id: string, updateRestaurantDto: UpdateRestaurantDto) {
-  //   return `This action updates a #${id} restaurant`;
-  // }
+  async update(id: string, updateRestaurantDto: UpdateRestaurantDto) {
+    const updatedRestaurant = await this.restaurantRepository.update(
+      id,
+      updateRestaurantDto,
+    );
 
-  // remove(id: string) {
-  //   return `This action removes a #${id} restaurant`;
-  // }
+    return updatedRestaurant;
+  }
+
+  async remove(id: string) {
+    return await this.restaurantRepository.delete(id);
+  }
 }
