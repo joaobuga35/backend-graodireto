@@ -1,73 +1,78 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+<h1 align="center"> DicaFoods API</h1>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+<div align="center">
+  
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![NestJS](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white) ![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=fff) 	![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) 
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+</div>
 
-## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+<h2>Índice</h2>
 
-## Installation
+1. [ Sobre ](#sobre)
+2. [ Tecnologias](#techs)
+3. [ Instalação ](#install)
 
-```bash
-$ npm install
-```
 
-## Running the app
+<a name="sobre"></a>
 
-```bash
-# development
-$ npm run start
+## 1. Sobre
+Este projeto foi gerado com NestJS.
 
-# watch mode
-$ npm run start:dev
+Esta é uma API de sugestão de restaurantes e pratos com NestJS. Ela oferece funcionalidades avançadas de CRUD para restaurantes, comidas e usuários. 
 
-# production mode
-$ npm run start:prod
-```
+A API possui autenticação de usuário e permite visualizar todos os restaurantes cadastrados com seus respectivos pratos. Há uma diferenciação entre usuários comuns e usuários admnistradores, com recursos adicionais disponíveis para admnistradores. Apenas admnistradores e próprios usuários podem deletar ou atualizar o usuário. Apenas admnistradores podem deletar e atualizar restaurantes e comidas.
 
-## Test
+### 1.1 Deploy da Aplicação para teste no Front-end
 
-```bash
-# unit tests
-$ npm run test
+- <a name="DicaFoods" href="https://grao-app.vercel.app/" target="_blank">DicaFoods - Live</a>
 
-# e2e tests
-$ npm run test:e2e
+<a name="techs"></a>
 
-# test coverage
-$ npm run test:cov
-```
+## 2. Tecnologias
 
-## Support
+- <a name="nest" href="https://docs.nestjs.com" target="_blank">NestJS</a>
+- <a name="postgres" href="https://www.postgresql.org/" target="_blank">PostgreSQL</a>
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+<a name="install"></a>
+## 3. Instalação e uso
 
-## Stay in touch
+### 3.1 Pré-Requisitos:
+  <h4>1º Passo</h4>
+  <h5>Antes de começar, certifique-se de ter instalado o Node.js em sua máquina. Acima da versão 16</h3>
+  <p>Faça um fork deste repositório, depois clone o fork em sua máquina.</p>
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+  <h4>2º passo</h4>
+  Variáveis de ambiente:
+    Crie um arquivo .env e complete com suas informações conforme esta no .env.example.
 
-## License
+  <h4>3º Passo - Configurando o Backend</h4>
+  - Rode os seguintes comandos: 
+  
+  ```bash
+  #instala todas as dependências necessárias
+  $ npm install
+    
+  $ #migrate
+  $ npx prisma migrate dev
+  #generate
+  $ npx prisma generate
+    
+  # development
+  $ npm run start
+    
+  # watch mode
+  $ npm run start:dev
+    
+  # production mode
+  $ npm run start:prod
+  ```
+  <h4>4º Passo - Testando o Backend</h4>
+  0. Primeiro rode o comando "npm run start:dev"
+  1. Acesse a documentação completa em: http://localhost:3000/api <br>
+  2. Na raiz do projeto há um arquivo chamado "dicafoods.json" que pode ser importado no insomnia para serem efetuados testes de rota, olhe a documentação e execute as rotas .
 
-Nest is [MIT licensed](LICENSE).
+## 4. Ambiente de desenvolvimento FRONT-END
+  <h4>1º Passo</h4>
+  <p>Acesse o seguinte repositório: <a name="frontend" href="https://github.com/joaobuga35/frontend-graodireto" target="_blank">Repositório Front-end</a> </p>
+  <p>Siga as instruções do README para poder testar e contribuir com o projeto.</p>
